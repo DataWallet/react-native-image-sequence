@@ -1,5 +1,5 @@
 # react-native-image-sequence
-native modules for handling image sequence animations. (created because i had performance issues with a javascript only solution like: https://github.com/remobile/react-native-image-animation) 
+native modules for handling image sequence animations. (created because i had performance issues with a javascript only solution like: https://github.com/remobile/react-native-image-animation)
 
 its a simple wrapper around **iOS** `UIImageView.animationImages` and **Android** `AnimationDrawable`
 
@@ -34,9 +34,19 @@ const centerIndex = Math.round(images.length / 2);
 ### Change animation speed
 You can change the speed of the animation by setting the `framesPerSecond` property.
 
-```javascript 
-<ImageSequence 
+```javascript
+<ImageSequence
   images={images}
   framesPerSecond={24}
+  />
+```
+
+### Make the animation loop
+You can make the animation loop by setting the `repeat` property. Default `false`.
+
+```javascript
+<ImageSequence
+  images={images}
+  repeat
   />
 ```
