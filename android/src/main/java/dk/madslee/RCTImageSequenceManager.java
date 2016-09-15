@@ -45,4 +45,13 @@ public class RCTImageSequenceManager extends SimpleViewManager<RCTImageSequenceV
 
         view.setImages(uris);
     }
+
+    /**
+     * @param view
+     * @param repeat a boolean that indicates whether the sequence should repeat or not
+     */
+     @ReactProp(name = "repeat")
+     public void setRepeat(final RCTImageSequenceView view, Boolean repeat) {
+         view.setRepeat(repeat);
+     }
 }

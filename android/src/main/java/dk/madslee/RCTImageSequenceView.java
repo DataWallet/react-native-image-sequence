@@ -16,6 +16,7 @@ import java.util.HashMap;
 
 public class RCTImageSequenceView extends ImageView {
     private Integer framesPerSecond = 24;
+    private Boolean repeat = false;
     private ArrayList<AsyncTask> activeTasks;
     private HashMap<Integer, Bitmap> bitmaps;
 
@@ -97,6 +98,14 @@ public class RCTImageSequenceView extends ImageView {
         }
     }
 
+    public void setRepeat(Boolean repeat) {
+        this.repeat = repeat;
+
+        if (isLoaded()) {
+            setupAnimationDrawable();
+        }
+    }
+
     private boolean isLoaded() {
         return !isLoading() && bitmaps != null && !bitmaps.isEmpty();
     }
@@ -112,7 +121,7 @@ public class RCTImageSequenceView extends ImageView {
             animationDrawable.addFrame(drawable, 1000 / framesPerSecond);
         }
 
-        animationDrawable.setOneShot(false);
+        animationDrawable.setOneShot(!this.repeat);
         animationDrawable.start();
 
         this.setImageDrawable(animationDrawable);
